@@ -13,12 +13,13 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Icons } from "../ui/icons";
 
-function PostCard( { thumbnail } : {thumbnail?: string},
-  props: React.ComponentPropsWithoutRef<typeof Card>) {
+function PostCard(
+  props: React.ComponentPropsWithoutRef<typeof Card> & { thumbnail?: string }
+) {
   return (
     <Card {...props}>
       <CardHeader className={cn("flex flex-col gap-y-2")}>
-        {thumbnail ? (
+        {props.thumbnail ? (
           <Image
             src="/Icons/noThumbnail"
             width={1080}
@@ -30,11 +31,13 @@ function PostCard( { thumbnail } : {thumbnail?: string},
           <Icons.noThumbnail />
         )}
 
-        <CardTitle>Post Title</CardTitle>
+        <CardTitle>{props.title}</CardTitle>
         <CardDescription>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          voluptatibus ducimus dolorum eum, architecto nobis mollitia molestias
-          quaerat nesciunt deleniti.
+          {props?.content?.length! > 100 ? (
+            <>{props?.content?.slice(0, 100)}...</>
+          ) : (
+            <>{props.content}</>
+          )}
         </CardDescription>
       </CardHeader>
       <CardFooter>
