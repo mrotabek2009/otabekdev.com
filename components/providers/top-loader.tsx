@@ -7,7 +7,7 @@ function TopLoader() {
     <NextTopLoader
       color="#2874bf"
       initialPosition={0.08}
-      crawlSpeed={5000}
+      crawlSpeed={2000}
       height={5}
       crawl={true}
       showSpinner={true}
